@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {Button, Form, FormFeedback, FormGroup, Input, Label} from 'reactstrap';
 import {getMultiSelected, repeat} from '../../utils';
-import {isCategoriesValid, isNameValid} from './Update/validators';
+import {isCategoriesValid, isNameValid} from '../../validations/validators';
 
 export const ProductForm = ({onSave, product = {}, categories: allCategories}) => {
     const [name, setName] = useState(product.name || '');

@@ -1,4 +1,4 @@
-import {timestampToDays} from '../../../utils';
+import {timestampToDays} from '../utils';
 
 export const isNameValid = (value) => {
     return value.trim().length > 0 && value.trim().length <= 200;
