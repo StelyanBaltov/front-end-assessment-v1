@@ -23,11 +23,18 @@ export const products = (state = [], action) => {
                 return item;
             });
         case productsActions.CREATE_PRODUCT:
+            const createdAt = new Date();
+            const defaultExpirationDate = new Date(createdAt);
+            const minimumDaysForExpiration = 30
+
+            defaultExpirationDate.setDate(createdAt.getDate() + minimumDaysForExpiration);
+
             return state.concat([{
                 ...action.data,
                 id: generateId(),
                 featured: isFeatured(action.data),
-                createdAt: new Date(),
+                createdAt: createdAt,
+                expirationDate: action.data.expirationDate || defaultExpirationDate
             }]);
         default:
             return state;
