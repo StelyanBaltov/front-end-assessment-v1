@@ -4,20 +4,19 @@ import {Button, Form, FormFeedback, FormGroup, Input, Label} from 'reactstrap';
 import {getMultiSelected, repeat} from '../../utils';
 import {isCategoriesValid, isNameValid} from './Update/validators';
 
-export const ProductForm = ({onSave, product = {}, categories}) => {
+export const ProductForm = ({onSave, product = {}, categories: allCategories}) => {
     const [name, setName] = useState(product.name || '');
     const [brand, setBrand] = useState(product.brand || '');
     const [rating, setRating] = useState(product.rating || 0);
-    const [productCategories, setProductCategories] = useState(product.categories || []);
+    const [categories, setProductCategories] = useState(product.categories || []);
     const [itemsInStock, setItemsInStock] = useState(product.itemsInStock || 0);
     const [receiptDate, setReceiptDate] = useState(product.receiptDate || '');
     const [expirationDate, setExpirationDate] = useState(product.expirationDate || '');
-    const [featured, setFeatured] = useState(product.featured);
+    const [featured, setFeatured] = useState(product.featured || false);
 
     useEffect(() => {
-        console.error(productCategories);
 
-    }, [productCategories])
+    }, [])
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -76,15 +75,15 @@ export const ProductForm = ({onSave, product = {}, categories}) => {
             <FormGroup>
                 <Label for="categories">Categories</Label>
                 <Input
-                    invalid={!isCategoriesValid(productCategories)}
+                    invalid={!isCategoriesValid(categories)}
                     type="select"
                     name="categories"
                     id="categories"
                     multiple
-                    value={productCategories}
+                    value={categories}
                     onChange={({target}) => setProductCategories(getMultiSelected(target))}
                 >
-                    {categories.map(({id, name}) => (
+                    {allCategories.map(({id, name}) => (
                         <option key={id} value={id}>{name}</option>
                     ))}
                 </Input>
