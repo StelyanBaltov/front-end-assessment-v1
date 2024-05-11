@@ -31,7 +31,7 @@ export const products = (state = [], action) => {
 
             return state.concat([{
                 ...action.data,
-                id: generateId(),
+                id: +generateId(),
                 featured: isFeatured(action.data),
                 createdAt: createdAt,
                 expirationDate: action.data.expirationDate || defaultExpirationDate
