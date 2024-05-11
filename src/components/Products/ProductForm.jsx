@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {Button, Form, FormFeedback, FormGroup, Input, Label} from 'reactstrap';
 import {getMultiSelected, repeat} from '../../utils';
 import {isCategoriesValid, isNameValid} from '../../validations/validators';
+import { RATING_THRESHOLD } from '../../reducers/products';
 
 export const ProductForm = ({onSave, product = {}, categories: allCategories}) => {
     const [name, setName] = useState(product.name || '');
@@ -15,7 +16,7 @@ export const ProductForm = ({onSave, product = {}, categories: allCategories}) =
     const [featured, setFeatured] = useState(product.featured || false);
 
     useEffect(() => {
-        setFeatured(rating > 8)
+        setFeatured(rating > RATING_THRESHOLD)
     }, [rating])
 
     const onSubmit = (e) => {

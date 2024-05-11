@@ -1,7 +1,8 @@
 import * as productsActions from '../actions/products';
 import {generateId} from '../utils';
 
-export const isFeatured = ({rating, featured}) => rating > 8 || featured;
+export const RATING_THRESHOLD = 8
+export const isFeatured = ({rating, featured}) => rating > RATING_THRESHOLD || featured;
 
 export const products = (state = [], action) => {
     switch (action.type) {
