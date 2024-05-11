@@ -5,10 +5,12 @@ import {Link} from 'react-router-dom';
 import {ProductForm} from '../ProductForm';
 
 const AddFormContainer = ({categories, dispatch}) => (
+    
     <>
         <Link to='/'>Home</Link>
         <ProductForm
             onSave={(data) => {
+                console.error(categories);
                 return;
             }}
             categories={categories}

@@ -14,7 +14,7 @@ export const App = () => (
                 path="/edit/:productId"
                 render={({match}) => (<UpdateFormContainer productId={parseInt(match.params.productId)}/>)}
             />,
-            <Route path="/add" component={AddFormContainer}/>,
+            <Route path="/add" render={() => (<AddFormContainer />) } />,
             <Route path="*" component={NotFound}/>,
         </Switch>
     </Main>

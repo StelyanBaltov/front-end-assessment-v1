@@ -10,6 +10,7 @@ const UpdateFormContainer = ({categories, dispatch, product}) => {
         return null;
     }
 
+    console.error(categories);
     return (
         <>
             <Link to='/'>Home</Link>
