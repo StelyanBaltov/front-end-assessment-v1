@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {getProductById} from '../../../reducers/products';
-import {ProductForm} from './ProductForm';
+import {ProductForm} from '../ProductForm';
 import {Link} from 'react-router-dom';
 
 const UpdateFormContainer = ({categories, dispatch, product}) => {
