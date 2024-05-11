@@ -11,7 +11,7 @@ import {App} from './App';
 import {fetchCategories} from './actions/categories';
 import {fetchProducts} from './actions/products';
 import {createHashHistory} from 'history';
-import {Router} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import {categoryApi} from './gateways/CategoryApi';
 
 const history = createHashHistory();
@@ -25,9 +25,9 @@ ReactDOM.render(
     <div className="content">
         <div className="container">
             <Provider store={store}>
-                <Router history={history}>
+                <BrowserRouter history={history}>
                     <App/>
-                </Router>
+                </BrowserRouter>
             </Provider>
         </div>
     </div>,
