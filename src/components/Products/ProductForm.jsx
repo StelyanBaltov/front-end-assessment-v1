@@ -15,8 +15,8 @@ export const ProductForm = ({onSave, product = {}, categories: allCategories}) =
     const [featured, setFeatured] = useState(product.featured || false);
 
     useEffect(() => {
-
-    }, [])
+        setFeatured(rating > 8)
+    }, [rating])
 
     const onSubmit = (e) => {
         e.preventDefault();
