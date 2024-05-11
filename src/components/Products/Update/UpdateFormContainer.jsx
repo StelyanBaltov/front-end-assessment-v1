@@ -4,19 +4,19 @@ import PropTypes from 'prop-types';
 import {getProductById} from '../../../reducers/products';
 import {ProductForm} from '../ProductForm';
 import {Link} from 'react-router-dom';
+import { updateProduct } from '../../../actions/products';
 
 const UpdateFormContainer = ({categories, dispatch, product}) => {
     if (!product) {
         return null;
     }
 
-    console.error(categories);
     return (
         <>
             <Link to='/'>Home</Link>
             <ProductForm
                 onSave={(data) => {
-                    return
+                    dispatch(updateProduct(product.id, data))
                 }}
                 product={product}
                 categories={categories}
