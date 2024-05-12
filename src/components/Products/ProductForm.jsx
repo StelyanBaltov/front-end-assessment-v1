@@ -14,13 +14,28 @@ export const ProductForm = ({onSave, product = {}, categories: allCategories}) =
     const [receiptDate, setReceiptDate] = useState(product.receiptDate || '');
     const [expirationDate, setExpirationDate] = useState(product.expirationDate || '');
     const [featured, setFeatured] = useState(product.featured || false);
+    const [formValid, setFormValid] = useState(false);
 
     useEffect(() => {
-        setFeatured(rating > RATING_THRESHOLD)
+        setFeatured(rating > RATING_THRESHOLD);
     }, [rating])
+
+    useEffect(() => {
+        const checkValidations = () => {
+            const nameValid = isNameValid(name);
+            const categoriesValid = isCategoriesValid(categories);
+
+            setFormValid(nameValid && categoriesValid);
+        }
+
+        checkValidations();
+    }, [name, categories])
 
     const onSubmit = (e) => {
         e.preventDefault();
+
+        if (!formValid) return
+
         onSave({
             name,
             brand,

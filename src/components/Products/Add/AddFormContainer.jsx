@@ -3,14 +3,14 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {ProductForm} from '../ProductForm';
-import { createProduct } from '../../../actions/products';
+import { createProductForm } from '../../../actions/products';
 
 const AddFormContainer = ({categories, dispatch}) => (
     <>
         <Link to='/'>Home</Link>
         <ProductForm
             onSave={(data) => {
-                dispatch(createProduct(data))
+                dispatch(createProductForm(data))
             }}
             categories={categories}
         />

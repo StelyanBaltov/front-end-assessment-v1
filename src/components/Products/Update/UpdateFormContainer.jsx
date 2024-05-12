@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import {getProductById} from '../../../reducers/products';
 import {ProductForm} from '../ProductForm';
 import {Link} from 'react-router-dom';
-import { updateProduct } from '../../../actions/products';
+import { updateProductForm } from '../../../actions/products';
 
 const UpdateFormContainer = ({categories, dispatch, product}) => {
     if (!product) {
@@ -16,7 +16,7 @@ const UpdateFormContainer = ({categories, dispatch, product}) => {
             <Link to='/'>Home</Link>
             <ProductForm
                 onSave={(data) => {
-                    dispatch(updateProduct(product.id, data))
+                    dispatch(updateProductForm(product.id, data))
                 }}
                 product={product}
                 categories={categories}
